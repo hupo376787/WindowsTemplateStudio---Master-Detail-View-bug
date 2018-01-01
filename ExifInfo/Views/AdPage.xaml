@@ -1,0 +1,171 @@
+﻿<Page
+    x:Class="ExifInfo.Views.AdPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ExifInfo.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ads="using:Microsoft.Advertising.WinRT.UI"
+    xmlns:adduplex="using:AdDuplex"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="ButtonStyle1"  
+       TargetType="Button">
+            <Setter Property="Background"  
+            Value="{ThemeResource ButtonBackground}" />
+            <Setter Property="Foreground"  
+            Value="{ThemeResource ButtonForeground}" />
+            <Setter Property="BorderBrush"  
+            Value="{ThemeResource ButtonBorderBrush}" />
+            <Setter Property="BorderThickness"  
+            Value="{ThemeResource ButtonBorderThemeThickness}" />
+            <Setter Property="Padding"  
+            Value="8,4,8,4" />
+            <Setter Property="HorizontalAlignment"  
+            Value="Left" />
+            <Setter Property="VerticalAlignment"  
+            Value="Center" />
+            <Setter Property="FontFamily"  
+            Value="{ThemeResource ContentControlThemeFontFamily}" />
+            <Setter Property="FontWeight"  
+            Value="Normal" />
+            <Setter Property="FontSize"  
+            Value="{ThemeResource ControlContentThemeFontSize}" />
+            <Setter Property="UseSystemFocusVisuals"  
+            Value="True" />
+            <Setter Property="FocusVisualMargin"  
+            Value="-3" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="RootGrid" CornerRadius="150"  
+                      Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"  
+                                                                   Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonBackgroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"  
+                                                                   Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonBorderBrushPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"  
+                                                                   Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonForegroundPointerOver}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"  
+                                                                   Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonBackgroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"  
+                                                                   Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonBorderBrushPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"  
+                                                                   Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonForegroundPressed}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background"  
+                                                                   Storyboard.TargetName="RootGrid">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonBackgroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"  
+                                                                   Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonBorderBrushDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground"  
+                                                                   Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0"  
+                                                                Value="{ThemeResource ButtonForegroundDisabled}" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter x:Name="ContentPresenter" CornerRadius="150"  
+                                      AutomationProperties.AccessibilityView="Raw"  
+                                      BorderBrush="{TemplateBinding BorderBrush}"  
+                                      BorderThickness="{TemplateBinding BorderThickness}"  
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"  
+                                      ContentTransitions="{TemplateBinding ContentTransitions}"  
+                                      Content="{TemplateBinding Content}"  
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                                      Padding="{TemplateBinding Padding}"  
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
+    <Grid x:Name="gridMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Uid="AdPage_Title" x:Name="TitlePage" Text="Ad Time" Style="{StaticResource PageTitleStyle}"/>
+        <TextBlock Grid.Row="1" x:Uid="uAdNotice" VerticalAlignment="Center" TextWrapping="Wrap" Text="Every time you click ad, the developer will earn a little bit money. Therefore, he will be more glad to add more funny things into this app. Thanks :)"/>
+        <Button Grid.Row="2" x:Uid="uBtnShowVideoAd" HorizontalAlignment="Center" Width="150" Height="150" Style="{StaticResource ButtonStyle1}" Content="Watch a video ad?" VerticalAlignment="Top" Click="RunInterstitialAd"/>
+        <ads:AdControl x:Name="adAd" Grid.Row="3" ApplicationId="9n3x2jzp7b96" AdUnitId="1100000349"
+                Width="300" Height="250" AdRefreshed="OnAdRefreshed"  ErrorOccurred="OnErrorOccurred"/>
+        
+        <adduplex:AdControl Grid.Row="4" AdUnitId="207791" MaxWidth="800" AppKey="6e721899-9488-47c1-bbd9-213c49ef4c7c" AdLoaded="AdControl_AdLoaded"  AdLoadingError="AdControl_AdLoadingError"/>
+
+        <TextBlock Grid.Row="5" x:Uid="uAdStatus" x:Name="textAdStatus" VerticalAlignment="Center" TextWrapping="Wrap" Text="Loading Ad..."/>
+
+        <Canvas x:Name="P" Width="2000" Height="2000"/>
+
+        <!--<Canvas x:Name="Pw" Width="1000" Height="1000"></Canvas>-->
+        <!--  Adaptive triggers  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitlePage.Margin" Value="48,0,12,7"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
